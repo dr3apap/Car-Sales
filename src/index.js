@@ -1,9 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import logger from "redux-logger";
+import { createStore, applyMiddleware } from "redux";
+import "bulma/css/bulma.css";
+import "./styles.scss";
+import { Provider } from "react-redux";
+import { carReducer } from "./carReducer";
+// const reduxLogger = require("redux-logger");
+// const logger = reduxLogger.createLogger();
+// const applyMiddleware = redux.applyMiddleware;
+const rootElement = document.getElementById("root");
 
-import 'bulma/css/bulma.css';
-import './styles.scss';
+const store = createStore(carReducer);
 
-const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootElement,
+);
