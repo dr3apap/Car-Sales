@@ -1,8 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { buyItem } from "./Action/action";
+import { connect } from "react-redux";
 
 const AdditionalFeature = props => {
-  const dispatch = useDispatch();
   const { feature, buyItem } = props;
   return (
     <li>
@@ -15,4 +15,4 @@ const AdditionalFeature = props => {
   );
 };
 
-export default AdditionalFeature;
+export default connect(null, { buyItem })(AdditionalFeature);
